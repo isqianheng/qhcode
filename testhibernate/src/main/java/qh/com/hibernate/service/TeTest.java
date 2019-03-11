@@ -4,17 +4,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import qh.com.hibernate.entity.TEntity;
 
-import java.io.File;
+import static org.junit.Assert.*;
 
-public class DoSomething {
-    public static void main(String[] args) {
-        //创建对象
-        TEntity t = new TEntity();
-        t.setA("1a")
-            .setB("1b");
+public class TeTest {
+    Session session=null;
+    Transaction transaction=null;
 
+    @org.junit.Before
+    public void setUp() throws Exception {
         //获取加载配置管理类
         Configuration configuration = new Configuration();
 
@@ -25,27 +23,23 @@ public class DoSomething {
         SessionFactory factory = configuration.buildSessionFactory();
 
         //得到Session对象
-        Session session = factory.openSession();
+        session = factory.openSession();
 
         //使用Hibernate操作数据库，都要开启事务,得到事务对象
-        Transaction transaction = session.getTransaction();
+        transaction = session.getTransaction();
 
         //开启事务
         transaction.begin();
-
-        //把对象添加到数据库中
-        Object id = session.save(t);
-        System.out.println("id:"+id);
-
-        //提交事务
-        transaction.commit();
-
-        //关闭Session
-        session.close();
     }
 
+    @org.junit.After
+    public void tearDown() throws Exception {
+        System.out.println("--------------------");
 
+    }
 
-
-
+    @org.junit.Test
+    public void load() {
+        session.close();
+    }
 }

@@ -5,7 +5,9 @@
 <hibernate-mapping>
 
     <class name="qh.com.hibernate.entity.TEntity" table="t" schema="mysql">
-        <id name="uuid" column="uuid"/>
+        <id name="tid" column="tid">
+            <generator class="native"></generator> <!--主键设置为native在mysql中会使用自增长auto_increment，id需要设置为数字类型。使用Long。-->
+        </id>
         <property name="a" column="A"/>
         <property name="b" column="B"/>
     </class>

@@ -14,7 +14,7 @@ public class CreateSql {
         configuration.configure(new File("D:\\code\\qhcode\\testhibernate\\src\\main\\java\\hibernate.cfg.xml"));
 
         SchemaExport export = new SchemaExport();
-　　　　　//是否生成sql语句，是否建表　　
-        export.create();
+//　　　　　//是否生成sql语句，是否建表　　
+//        export.create();
     }
 }

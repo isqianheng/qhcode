@@ -3,16 +3,16 @@ package qh.com.hibernate.entity;
 import java.util.Objects;
 
 public class TEntity {
-    private String uuid;
+    private Long tid;
     private String a;
     private String b;
 
-    public String getUuid() {
-        return uuid;
+    public Long getTid() {
+        return tid;
     }
 
-    public TEntity setUuid(String uuid) {
-        this.uuid = uuid;
+    public TEntity setTid(Long tid) {
+        this.tid = tid;
         return this;
     }
 
@@ -32,20 +32,5 @@ public class TEntity {
     public TEntity setB(String b) {
         this.b = b;
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TEntity tEntity = (TEntity) o;
-        return Objects.equals(uuid, tEntity.uuid) &&
-                Objects.equals(a, tEntity.a) &&
-                Objects.equals(b, tEntity.b);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(uuid, a, b);
     }
 }

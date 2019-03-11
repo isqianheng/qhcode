@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="qh.com.hibernate.testOne2Many.Children" table="Children" schema="mysql">
+        <id name="id" >
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <property name="birthday" /> <!-- 使用java8的 localdate就不能写type="date"，否则会匹配到Date -->
+        <set name="toys" cascade="all"> <!-- 使用级联 -->
+            <key column="childrenID" foreign-key="none"/>  <!--不在数据库显式设置外键。如果是自动建表，会在子表中创建这个外键字段（注意Toy类没有childrenID这个属性，该属性只是供关系数据库保存关联）。关系型数据库中没有引用，没有单向双向关联的说法，子表中的外键就自然可以双向查找   -->
+            <one-to-many class="qh.com.hibernate.testOne2Many.Toy"/>
+        </set>
+    </class>
+</hibernate-mapping>

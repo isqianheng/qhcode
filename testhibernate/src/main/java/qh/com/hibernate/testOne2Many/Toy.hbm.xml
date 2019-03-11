@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="qh.com.hibernate.testOne2Many.Toy" table="Toy" discriminator-value="toy"  schema="mysql">
+        <id name="toyID" >
+            <generator class="uuid"/>
+        </id>
+        <discriminator column="toytype" type="string"/><!--鉴别器，放在后面会报错-->
+        <property name="name"/>
+        <property name="description"/>
+        <subclass name="qh.com.hibernate.testOne2Many.ToyCat" discriminator-value="cat">
+            <property name="miao"/>
+        </subclass>
+        <subclass name="qh.com.hibernate.testOne2Many.ToyDog" discriminator-value="dog">
+            <property name="wang"/>
+        </subclass>
+    </class>
+</hibernate-mapping>
